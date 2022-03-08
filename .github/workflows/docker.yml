@@ -28,4 +28,4 @@ jobs:
         with:
           push: true
           platforms: linux/amd64,linux/arm64
-          tags: duochjagochpensionarerna/rabbitmq:latest
+          tags: masstransit/rabbitmq:latest
