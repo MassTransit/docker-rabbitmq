@@ -23,6 +23,6 @@ jobs:
       - name: Build and push image to DockerHub
         uses: docker/build-push-action@v3
         with:
-          platforms: linux/amd64,linux/arm64v8
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: masstransit/rabbitmq:latest
