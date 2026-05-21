@@ -1,6 +1,7 @@
-FROM rabbitmq:4.1.3-management
+FROM rabbitmq:4.2.6-management
 
 RUN apt-get update; \
-    apt-get install -y --no-install-recommends curl; \
-    curl -L https://github.com/rabbitmq/rabbitmq-delayed-message-exchange/releases/download/v4.1.0/rabbitmq_delayed_message_exchange-4.1.0.ez > $RABBITMQ_HOME/plugins/rabbitmq_delayed_message_exchange-4.1.0.ez; \
+    apt-get install -y --no-install-recommends curl unzip; \
+    curl -L -o /tmp/rabbitmq_delayed_message_exchange.zip https://github.com/cloudamqp/rabbitmq-delayed-message-exchange/releases/download/v4.2.6/rabbitmq_delayed_message_exchange-4.2.6-erlang-26.zip && \
+    unzip -o /tmp/rabbitmq_delayed_message_exchange.zip -d "$RABBITMQ_HOME/plugins" && \
     rabbitmq-plugins enable --offline rabbitmq_delayed_message_exchange rabbitmq_consistent_hash_exchange rabbitmq_prometheus rabbitmq_shovel rabbitmq_shovel_management
